@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Liste Observations</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Liste des Observations</h3>
+        <a th:href="@{/addObservation}" class="btn btn-primary">Ajouter</a>
+    </div>
+    <div class="card"><div class="card-body table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Plantation</th>
+                <th>Auteur</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="o : ${listeObservations}">
+                <td th:text="${o.id}"></td>
+                <td th:text="${o.dateObservation}"></td>
+                <td th:text="${o.description}"></td>
+                <td th:text="${o.plantation != null ? 'Plantation #' + o.plantation.id : ''}"></td>
+                <td th:text="${o.auteur != null ? o.auteur.nom + ' ' + o.auteur.prenom : ''}"></td>
+                <td>
+                    <a th:href="@{/deleteObservation/{id}(id=${o.id})}" class="btn btn-danger btn-sm"
+                       onclick="return confirm('Supprimer cet element ?');">Supprimer</a>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(listeObservations)}">
+                <td colspan="6" class="text-center text-muted">Aucun element</td>
+            </tr>
+            </tbody>
+        </table>
+    </div></div>
+</div>
+</body>
+</html>

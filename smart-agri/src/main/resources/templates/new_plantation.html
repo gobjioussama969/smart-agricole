@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ajout Plantation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+<div class="container">
+
+    <h3>Ajout Plantation</h3>
+    <div class="card"><div class="card-body">
+        <form th:action="@{/savePlantation}" th:object="${PlantationForm}" method="post" class="col-md-6">
+            <div class="form-group">
+                <label for="datePlantation">Date plantation</label>
+                <input type="date" class="form-control" id="datePlantation" th:field="*{datePlantation}" placeholder="datePlantation">
+            </div>
+            <div class="form-group">
+                <label for="superficie">Superficie</label>
+                <input type="number" step="any" class="form-control" id="superficie" th:field="*{superficie}" placeholder="superficie">
+            </div>
+            <div class="form-group">
+                <label for="quantitePlantee">Quantite plantee</label>
+                <input type="number" step="any" class="form-control" id="quantitePlantee" th:field="*{quantitePlantee}" placeholder="quantitePlantee">
+            </div>
+            <div class="form-group">
+                <label for="dateRecoltePrevue">Date recolte prevue</label>
+                <input type="date" class="form-control" id="dateRecoltePrevue" th:field="*{dateRecoltePrevue}" placeholder="dateRecoltePrevue">
+            </div>
+            <div class="form-group">
+                <label for="commentaire">Commentaire</label>
+                <input type="text" class="form-control" id="commentaire" th:field="*{commentaire}" placeholder="commentaire">
+            </div>
+            <div class="form-group">
+                <label for="statut">Statut</label>
+                <select class="form-control" id="statut" th:field="*{statut}">
+                    <option th:each="o : ${statutPlantations}" th:value="${o}" th:text="${o}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="parcelle">Parcelle</label>
+                <select class="form-control" id="parcelle" th:field="*{parcelle.id}" required>
+                    <option th:each="o : ${listeParcelles}" th:value="${o.id}" th:text="${o.nom}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="campagne">Campagne</label>
+                <select class="form-control" id="campagne" th:field="*{campagne.id}" required>
+                    <option th:each="o : ${listeCampagnes}" th:value="${o.id}" th:text="${o.nom}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="variete">Variete</label>
+                <select class="form-control" id="variete" th:field="*{variete.id}" required>
+                    <option th:each="o : ${listeVarietes}" th:value="${o.id}" th:text="${o.nom}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a th:href="@{/allPlantation}" class="btn btn-secondary">Annuler</a>
+        </form>
+    </div></div>
+</div>
+</body>
+</html>

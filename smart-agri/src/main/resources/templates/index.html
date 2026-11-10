@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart Agri</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+<div class="container">
+    <h3>Gestion des exploitations agricoles</h3>
+    <div class="row mt-3">
+        <div class="col-md-3 mb-3">
+            <div class="card h-100"><div class="card-body">
+                <h5 class="card-title">Exploitations</h5>
+                <a th:href="@{/allExploitation}" class="btn btn-outline-success btn-sm">Liste</a>
+                <a th:href="@{/addExploitation}" class="btn btn-success btn-sm">Ajouter</a>
+            </div></div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card h-100"><div class="card-body">
+                <h5 class="card-title">Parcelles</h5>
+                <a th:href="@{/allParcelle}" class="btn btn-outline-success btn-sm">Liste</a>
+                <a th:href="@{/addParcelle}" class="btn btn-success btn-sm">Ajouter</a>
+            </div></div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card h-100"><div class="card-body">
+                <h5 class="card-title">Cultures</h5>
+                <a th:href="@{/allCulture}" class="btn btn-outline-success btn-sm">Liste</a>
+                <a th:href="@{/addCulture}" class="btn btn-success btn-sm">Ajouter</a>
+            </div></div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card h-100"><div class="card-body">
+                <h5 class="card-title">Variétés</h5>
+                <a th:href="@{/allVariete}" class="btn btn-outline-success btn-sm">Liste</a>
+                <a th:href="@{/addVariete}" class="btn btn-success btn-sm">Ajouter</a>
+            </div></div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card h-100"><div class="card-body">
+                <h5 class="card-title">Campagnes</h5>
+                <a th:href="@{/allCampagne}" class="btn btn-outline-success btn-sm">Liste</a>
+                <a th:href="@{/addCampagne}" class="btn btn-success btn-sm">Ajouter</a>
+            </div></div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card h-100"><div class="card-body">
+                <h5 class="card-title">Utilisateurs</h5>
+                <a th:href="@{/allUtilisateur}" class="btn btn-outline-success btn-sm">Liste</a>
+                <a th:href="@{/addUtilisateur}" class="btn btn-success btn-sm">Ajouter</a>
+            </div></div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card h-100"><div class="card-body">
+                <h5 class="card-title">Affectations</h5>
+                <a th:href="@{/allAffectation}" class="btn btn-outline-success btn-sm">Liste</a>
+                <a th:href="@{/addAffectation}" class="btn btn-success btn-sm">Ajouter</a>
+            </div></div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card h-100"><div class="card-body">
+                <h5 class="card-title">Plantations</h5>
+                <a th:href="@{/allPlantation}" class="btn btn-outline-success btn-sm">Liste</a>
+                <a th:href="@{/addPlantation}" class="btn btn-success btn-sm">Ajouter</a>
+            </div></div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card h-100"><div class="card-body">
+                <h5 class="card-title">Observations</h5>
+                <a th:href="@{/allObservation}" class="btn btn-outline-success btn-sm">Liste</a>
+                <a th:href="@{/addObservation}" class="btn btn-success btn-sm">Ajouter</a>
+            </div></div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card h-100"><div class="card-body">
+                <h5 class="card-title">Irrigations</h5>
+                <a th:href="@{/allIrrigation}" class="btn btn-outline-success btn-sm">Liste</a>
+                <a th:href="@{/addIrrigation}" class="btn btn-success btn-sm">Ajouter</a>
+            </div></div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card h-100"><div class="card-body">
+                <h5 class="card-title">Fertilisations</h5>
+                <a th:href="@{/allFertilisation}" class="btn btn-outline-success btn-sm">Liste</a>
+                <a th:href="@{/addFertilisation}" class="btn btn-success btn-sm">Ajouter</a>
+            </div></div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card h-100"><div class="card-body">
+                <h5 class="card-title">Traitements</h5>
+                <a th:href="@{/allTraitement}" class="btn btn-outline-success btn-sm">Liste</a>
+                <a th:href="@{/addTraitement}" class="btn btn-success btn-sm">Ajouter</a>
+            </div></div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card h-100"><div class="card-body">
+                <h5 class="card-title">Récoltes</h5>
+                <a th:href="@{/allRecolte}" class="btn btn-outline-success btn-sm">Liste</a>
+                <a th:href="@{/addRecolte}" class="btn btn-success btn-sm">Ajouter</a>
+            </div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

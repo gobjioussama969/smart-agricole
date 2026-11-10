@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ajout Recolte</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+<div class="container">
+
+    <h3>Ajout Recolte</h3>
+    <div class="card"><div class="card-body">
+        <form th:action="@{/saveRecolte}" th:object="${RecolteForm}" method="post" class="col-md-6">
+            <div class="form-group">
+                <label for="dateRecolte">Date recolte</label>
+                <input type="date" class="form-control" id="dateRecolte" th:field="*{dateRecolte}" placeholder="dateRecolte">
+            </div>
+            <div class="form-group">
+                <label for="quantite">Quantite</label>
+                <input type="number" step="any" class="form-control" id="quantite" th:field="*{quantite}" placeholder="quantite">
+            </div>
+            <div class="form-group">
+                <label for="unite">Unite</label>
+                <select class="form-control" id="unite" th:field="*{unite}">
+                    <option th:each="o : ${uniteRecoltes}" th:value="${o}" th:text="${o}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="commentaire">Commentaire</label>
+                <input type="text" class="form-control" id="commentaire" th:field="*{commentaire}" placeholder="commentaire">
+            </div>
+            <div class="form-group">
+                <label for="plantation">Plantation</label>
+                <select class="form-control" id="plantation" th:field="*{plantation.id}" required>
+                    <option th:each="o : ${listePlantations}" th:value="${o.id}" th:text="${'Plantation #' + o.id}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="auteur">Auteur</label>
+                <select class="form-control" id="auteur" th:field="*{auteur.id}" required>
+                    <option th:each="o : ${listeUtilisateurs}" th:value="${o.id}" th:text="${o.nom + ' ' + o.prenom}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a th:href="@{/allRecolte}" class="btn btn-secondary">Annuler</a>
+        </form>
+    </div></div>
+</div>
+</body>
+</html>

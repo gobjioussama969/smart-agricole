@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ajout Affectation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+<div class="container">
+
+    <h3>Ajout Affectation</h3>
+    <div class="card"><div class="card-body">
+        <form th:action="@{/saveAffectation}" th:object="${AffectationForm}" method="post" class="col-md-6">
+            <div class="form-group">
+                <label for="utilisateur">Utilisateur</label>
+                <select class="form-control" id="utilisateur" th:field="*{utilisateur.id}" required>
+                    <option th:each="o : ${listeUtilisateurs}" th:value="${o.id}" th:text="${o.nom + ' ' + o.prenom}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="parcelle">Parcelle</label>
+                <select class="form-control" id="parcelle" th:field="*{parcelle.id}" required>
+                    <option th:each="o : ${listeParcelles}" th:value="${o.id}" th:text="${o.nom}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a th:href="@{/allAffectation}" class="btn btn-secondary">Annuler</a>
+        </form>
+    </div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Barre de navigation commune, incluse dans toutes les pages avec th:replace -->
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-success mb-4">
+    <a class="navbar-brand" th:href="@{/}">Smart Agri</a>
+    <button class="navbar-toggler" type="button" onclick="document.getElementById('menu').classList.toggle('show')">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" th:href="@{/allExploitation}">Exploitations</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/allParcelle}">Parcelles</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/allCampagne}">Campagnes</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/allPlantation}">Plantations</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/allUtilisateur}">Utilisateurs</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" onclick="this.nextElementSibling.classList.toggle('show'); return false;">Tout</a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" th:href="@{/allExploitation}">Exploitations</a>
+                    <a class="dropdown-item" th:href="@{/allParcelle}">Parcelles</a>
+                    <a class="dropdown-item" th:href="@{/allCulture}">Cultures</a>
+                    <a class="dropdown-item" th:href="@{/allVariete}">Variétés</a>
+                    <a class="dropdown-item" th:href="@{/allCampagne}">Campagnes</a>
+                    <a class="dropdown-item" th:href="@{/allUtilisateur}">Utilisateurs</a>
+                    <a class="dropdown-item" th:href="@{/allAffectation}">Affectations</a>
+                    <a class="dropdown-item" th:href="@{/allPlantation}">Plantations</a>
+                    <a class="dropdown-item" th:href="@{/allObservation}">Observations</a>
+                    <a class="dropdown-item" th:href="@{/allIrrigation}">Irrigations</a>
+                    <a class="dropdown-item" th:href="@{/allFertilisation}">Fertilisations</a>
+                    <a class="dropdown-item" th:href="@{/allTraitement}">Traitements</a>
+                    <a class="dropdown-item" th:href="@{/allRecolte}">Récoltes</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+</body>
+</html>

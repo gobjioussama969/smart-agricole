@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Liste Cultures</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Liste des Cultures</h3>
+        <a th:href="@{/addCulture}" class="btn btn-primary">Ajouter</a>
+    </div>
+    <div class="card"><div class="card-body table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="o : ${listeCultures}">
+                <td th:text="${o.id}"></td>
+                <td th:text="${o.nom}"></td>
+                <td th:text="${o.type}"></td>
+                <td th:text="${o.description}"></td>
+                <td>
+                    <a th:href="@{/deleteCulture/{id}(id=${o.id})}" class="btn btn-danger btn-sm"
+                       onclick="return confirm('Supprimer cet element ?');">Supprimer</a>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(listeCultures)}">
+                <td colspan="5" class="text-center text-muted">Aucun element</td>
+            </tr>
+            </tbody>
+        </table>
+    </div></div>
+</div>
+</body>
+</html>

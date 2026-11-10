@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Liste Utilisateurs</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Liste des Utilisateurs</h3>
+        <a th:href="@{/addUtilisateur}" class="btn btn-primary">Ajouter</a>
+    </div>
+    <div class="card"><div class="card-body table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actif</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="o : ${listeUtilisateurs}">
+                <td th:text="${o.id}"></td>
+                <td th:text="${o.nom}"></td>
+                <td th:text="${o.prenom}"></td>
+                <td th:text="${o.email}"></td>
+                <td th:text="${o.role}"></td>
+                <td th:text="${o.actif != null and o.actif ? 'Oui' : 'Non'}"></td>
+                <td>
+                    <a th:href="@{/deleteUtilisateur/{id}(id=${o.id})}" class="btn btn-danger btn-sm"
+                       onclick="return confirm('Supprimer cet element ?');">Supprimer</a>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(listeUtilisateurs)}">
+                <td colspan="7" class="text-center text-muted">Aucun element</td>
+            </tr>
+            </tbody>
+        </table>
+    </div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Liste Plantations</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Liste des Plantations</h3>
+        <a th:href="@{/addPlantation}" class="btn btn-primary">Ajouter</a>
+    </div>
+    <div class="card"><div class="card-body table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th>Id</th>
+                <th>Date plantation</th>
+                <th>Superficie</th>
+                <th>Quantite plantee</th>
+                <th>Date recolte prevue</th>
+                <th>Statut</th>
+                <th>Parcelle</th>
+                <th>Campagne</th>
+                <th>Variete</th>
+                <th>Commentaire</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="o : ${listePlantations}">
+                <td th:text="${o.id}"></td>
+                <td th:text="${o.datePlantation}"></td>
+                <td th:text="${o.superficie}"></td>
+                <td th:text="${o.quantitePlantee}"></td>
+                <td th:text="${o.dateRecoltePrevue}"></td>
+                <td th:text="${o.statut}"></td>
+                <td th:text="${o.parcelle != null ? o.parcelle.nom : ''}"></td>
+                <td th:text="${o.campagne != null ? o.campagne.nom : ''}"></td>
+                <td th:text="${o.variete != null ? o.variete.nom : ''}"></td>
+                <td th:text="${o.commentaire}"></td>
+                <td>
+                    <a th:href="@{/deletePlantation/{id}(id=${o.id})}" class="btn btn-danger btn-sm"
+                       onclick="return confirm('Supprimer cet element ?');">Supprimer</a>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(listePlantations)}">
+                <td colspan="11" class="text-center text-muted">Aucun element</td>
+            </tr>
+            </tbody>
+        </table>
+    </div></div>
+</div>
+</body>
+</html>
